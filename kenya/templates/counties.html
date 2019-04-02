@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
+{% if item_list %}
+<table id="example" class="table table-bordered table-striped display" style="width:100%">
+    <thead class="thead-dark">
+        <tr>
+            <th>County_Code</th>
+            <th>County_Name</th>
+            <th>Number of Constitiencies</th>
+            <th>Number of SubCounties</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in item_list %}
+        <tr>
+            <td>{{ item.code }}</td>
+            <td><a href="{% url 'county_details' item.code %}">{{item.name }}</a></td>
+            <td>{{ item.constituency_number }}</td>
+            <td>{{ item.subcounty_number  }}</td></a>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>County_Code</th>
+            <th>County_Name</th>
+            <th>Number of Constituencies</th>
+            <th>Number of SubCounties</th>
+        </tr>
+    </tfoot>
+</table>
+{% else %}
+<p>No details are available.</p>
+{% endif %}
+{% endblock %}
