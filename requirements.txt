@@ -1,2 +1,2 @@
 django==2.2
-pillow
+pillow==6.0.0
